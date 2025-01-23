@@ -4,7 +4,7 @@ const orderTypeDef = gql`
   type Order {
     id: ID!
     userId: Int!
-    productId: Int!
+    productsId: Int!
     quantity: Int!
     totalPrice: Float!
     status: String!
@@ -12,7 +12,7 @@ const orderTypeDef = gql`
 
   input OrderInput {
     userId: Int!
-    productId: Int!
+    productsId: Int!
     quantity: Int!
     totalPrice: Float!
     status: String!
@@ -24,15 +24,8 @@ const orderTypeDef = gql`
   }
 
   type Mutation {
-    createOrder(
-      userId: Int!
-      productId: Int!
-      quantity: Int!
-      totalPrice: Float!
-      status: String!
-    ): Order!
-    updateOrder(
-      id: ID! ): Order
+    createOrder(input: OrderInput!): Order!
+    updateOrder(id: ID!,input: OrderInput! ): Order
     deleteOrder(id: ID!): Order
   }
 `;

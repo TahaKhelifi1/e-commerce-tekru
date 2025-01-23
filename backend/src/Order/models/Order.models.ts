@@ -4,7 +4,7 @@ import {sequelize}  from '../../config/connection';
 class Order extends Model {
   public id!: number;
   public userId!: number;
-  public productId!: number;
+  public productsId!: number;
   public quantity!: number;
   public totalPrice!: number;
   public status!: string;
@@ -20,9 +20,10 @@ Order.init(
     },
     userId: {
       type: DataTypes.INTEGER,
+      
       allowNull: false,
     },
-    productId: {
+    productsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -50,7 +51,5 @@ Order.init(
   }
 );
 
-//Order.beforeSync(() => console.log('Create table for Order'));
-//Order.afterSync(() => console.log('Table created for Order'));
 
 export default Order;

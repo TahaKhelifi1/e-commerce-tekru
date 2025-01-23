@@ -6,7 +6,7 @@ const orderResolvers = {
     listOrders: (_: any) => listOrders(),
   },
   Mutation: {
-    createOrder: (_: any, args: { OrderInput: any }) => createOrder(_, args),
+    createOrder: (_: any, args: { input: any }, context: any, info: any) => createOrder(_, args),
     updateOrder: (_: any, args: { id: number, input: any }) => updateOrder(_, args),
     deleteOrder: (_: any, args: { id: number }) => deleteOrder(_, args),
   },

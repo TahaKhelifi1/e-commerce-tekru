@@ -11,18 +11,12 @@ const productSchema = gql`
   }
 
   type Query {
-    listProduct: [Product!]!
+    listProduct: [Product]
     getProduct(id: ID!): Product
   }
 
   type Mutation {
-    createProduct(
-      name: String!
-      price: Float!
-      description: String!
-      stock: Int!
-      category: String!
-    ): Product!
+    createProduct(input: ProductInput!): Product!
     updateProduct(
       id: ID!
       name: String
@@ -31,7 +25,7 @@ const productSchema = gql`
       stock: Int
       category: String
     ): Product
-    deleteProduct(id: ID!): Boolean
+    deleteProduct(id: ID!): Product!
     
   }
 `;

@@ -3,30 +3,33 @@ import { gql } from 'apollo-server-express';
 const userSchema = gql`
     type User {
         id: ID!
-        nom: String!
-        prenom: String!
+        name: String!      
         email: String!
         password: String!
-        is_admin: Boolean!
+        role: String!      # Added 'role' to match the model
+        address: String!   # Added 'address' to match the model
+        phone_number: String! # Added 'phone_number' to match the model
     }
 
     input UserInput {
-        nom: String
-        prenom: String
-        email: String
-        password: String
-        is_admin: Boolean
+        name: String!       # Changed 'nom' to 'name'
+        email: String!
+        password: String!
+        role: String!       # Added 'role'
+        address: String!    # Added 'address'
+        phone_number: String! # Added 'phone_number'
+        
     }
 
     type Query {
         getUser(id: ID!): User
-        getUsers: [User]  # Corrected this to match your resolver
+        getUsers: [User!]!  # Ensured a non-nullable array of users
     }
 
     type Mutation {
-        createUser(UserInput: UserInput): User  # Ensure the input argument name matches your resolver
-        updateUser(id: ID!, userInput: UserInput): User  # Ensure the input argument name matches your resolver
-        deleteUser(id: ID!): String  # Returns a success message, change to String
+        createUser(input: UserInput!): User!    # Fixed argument name
+        updateUser(id: ID!, input: UserInput!): User! # Fixed argument name
+        deleteUser(id: ID!): User!           # Kept return type as String for success message
     }
 `;
 

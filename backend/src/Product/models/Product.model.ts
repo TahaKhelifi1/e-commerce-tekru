@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import {sequelize} from '../../config/connection';
-import User from '../../User/models/User.models';
+
 
 class Product extends Model {
     public id!:number;
@@ -38,6 +38,7 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    
   },
   {
     sequelize,

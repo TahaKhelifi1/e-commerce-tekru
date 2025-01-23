@@ -6,9 +6,9 @@ const productResolvers = {
     listProduct: (_: any) => listProduct(),
   },
   Mutation: {
-    createProduct: (_: any, args: { ProductInput: any }) => createProduct(_, args),
-    updateProduct: (_: any, args: { id: number, input: any }) => updateProduct(_, args),
-    deleteProduct: (_: any, args: { id: number }) => deleteProduct(_, args),
+    createProduct:(_: any, args: { input: any }, context: any, info: any) => createProduct(_, args),
+    updateProduct: (_: any, args: { id: string, input: any }, context: any, info: any) => updateProduct(_, args),
+    deleteProduct:(_: any, args: { id: string }, context: any, info: any) => deleteProduct(_, args),
   },
 };
 

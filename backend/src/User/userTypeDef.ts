@@ -4,20 +4,22 @@ const userTypesDef = gql`
   # Define the User type with necessary fields
   type User {
     id: ID!
-    nom: String!
-    prenom: String!
+    name: String!        # Updated from 'nom' to 'name' for consistency with the model
     email: String!
     password: String!
-    is_admin: Boolean!
+    role: String!        # Added 'role' to match the model
+    address: String!     # Added 'address' to match the model
+    phone_number: String! # Added 'phone_number' to match the model
   }
 
   # Define the input type for user creation and update
   input UserInput {
-    nom: String
-    prenom: String
+    name: String         # Updated from 'nom' to 'name' for consistency with the model
     email: String
     password: String
-    is_admin: Boolean
+    role: String         # Added 'role' to match the model
+    address: String      # Added 'address' to match the model
+    phone_number: String # Added 'phone_number' to match the model
   }
 
   # Define the query type for fetching users
@@ -28,9 +30,9 @@ const userTypesDef = gql`
 
   # Define the mutation type for creating, updating, and deleting users
   type Mutation {
-    createUser(userInput: UserInput): User
-    updateUser(id: ID!, userInput: UserInput): User
-    deleteUser(id: ID!): String
+    createUser(input: UserInput!): User      # Updated argument name to 'input' for consistency
+    updateUser(id: ID!, input: UserInput!): User # Updated argument name to 'input' for consistency
+    deleteUser(id: ID!): User               # Updated return type to 'User' to return the deleted user's details
   }
 `;
 

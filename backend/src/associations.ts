@@ -13,10 +13,11 @@ const defineAssociations = () => {
         foreignKey: 'userId',
         as: 'user',
     });
-    // Product-Order: Many-to-Many
+
+    //Product-Order: Many-to-Many
     Product.belongsToMany(Order, {
         through: 'cart',
-        foreignKey: 'productId',
+        foreignKey: 'productsId',
         as: 'orders',
     });
     Order.belongsToMany(Product, {
@@ -24,8 +25,7 @@ const defineAssociations = () => {
         foreignKey: 'OrderstId',
         as: 'products',
     });
-
-
+    
 };
 
 export default defineAssociations;

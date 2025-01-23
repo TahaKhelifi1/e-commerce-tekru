@@ -11,9 +11,10 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { mergedResolvers, mergedTypeDefs } from '.';
 import { connection, sequelize } from './config/connection';
 import defineAssociations from './associations';
-import syncDatabase from './sync';
+// import syncDatabase from './sync';
 
-syncDatabase();
+// syncDatabase();
+
 defineAssociations();
 
 

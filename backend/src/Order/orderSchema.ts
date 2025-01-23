@@ -15,7 +15,7 @@ const orderSchema = gql`
 
   input OrderInput {
     userId: ID!
-    productId: ID!
+    productsId: ID!
     quantity: Int!
     totalPrice: Float!
     status: String!
@@ -23,7 +23,7 @@ const orderSchema = gql`
 
   input UpdateOrderInput {
     userId: ID
-    productId: ID
+    productsId: ID
     quantity: Int
     totalPrice: Float
     status: String
@@ -32,7 +32,7 @@ const orderSchema = gql`
   input OrderFilters {
     id: [ID!]
     userId: [ID!]
-    productId: [ID!]
+    productsId: [ID!]
     status: [String!]
     createdAt: DateFilterInput
     updatedAt: DateFilterInput
@@ -41,7 +41,7 @@ const orderSchema = gql`
   input OrderOrderBy {
     id: Sort
     userId: Sort
-    productId: Sort
+    productsId: Sort
     quantity: Sort
     totalPrice: Sort
     status: Sort
@@ -55,8 +55,8 @@ const orderSchema = gql`
   }
 
   type Mutation {
-    createOrder(data: OrderInput!): Order
-    updateOrder(id: ID!, data: UpdateOrderInput!): Order
+    createOrder(input: OrderInput!): Order
+    updateOrder(id: ID!, input: UpdateOrderInput!): Order
     deleteOrder(id: ID!): Boolean
   }
 `;

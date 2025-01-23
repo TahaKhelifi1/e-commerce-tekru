@@ -1,46 +1,57 @@
 import { Model, DataTypes } from 'sequelize';
-import {sequelize}  from '../../config/connection';
+import { sequelize } from '../../config/connection';
 
 class User extends Model {
-    public id!:number;
+    static find(arg0: { where: { email: any; }; }) {
+      throw new Error('Method not implemented.');
+    }
+    public id!: number;
     public name!: string;
     public email!: string;
     public password!: string;
     public role!: string;
-    public adress!: string;
+    public address!: string; // Fixed typo: 'adress' -> 'address'
     public phone_number!: string;
 }
+
 User.init(
   {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-      },
-      name: {
+    },
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      email: {
+    },
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      password: {
+        unique: true, // Add unique constraint for email
+        /*validate: {
+            isEmail: true, // Ensure valid email format
+        },*/
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      address: {
+    },
+    role: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      role: {
+    },
+    address: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      phone_number: {
+    },
+    phone_number: {
         type: DataTypes.STRING,
         allowNull: false,
-      }
+        /*validate: {
+            is: /^[0-9]{10,15}$/, // Example regex for phone number validation
+        },*/
+    },
   },
   {
     sequelize,
